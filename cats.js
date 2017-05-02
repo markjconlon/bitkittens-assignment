@@ -5,10 +5,13 @@ $(function(){
       method: 'GET',
       dataType: 'json'
     }).done(function(data) {
+      debugger;
       var catList = data['cats'];
-      catName = catList[1]['name']
-      catPhoto = catList[1]['photo']
-      $('<img>').attr('src', catPhoto).attr('alt', catName).appendTo('#cat1')
+      for (var i = 0; i < catList.length; i++) {
+        var catName = catList[i]['name']
+        var catPhoto = catList[i]['photo']
+        $('<img>').attr('src', catPhoto).attr('alt', catName).appendTo('#cat' + (i + 1))
+      }
     });
   });
 
